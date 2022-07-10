@@ -1,2 +1,7 @@
 *.sqlite*
-*.DS_Store
+.DS_Store
+
+### Laravel ###
+vendor/
+node_modules/
+npm-debug.log
