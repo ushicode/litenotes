@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Note;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
 class NoteController extends Controller
@@ -49,6 +50,7 @@ class NoteController extends Controller
         $userId = Auth::user()->id;
 
         Note::create([
+            'uuid' => Str::uuid(),
             'user_id' => $userId,
             'title' => $request->title,
             'text' => $request->text,
@@ -75,9 +77,9 @@ class NoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($uuid)
     { 
-       $note = Note::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
+       $note = Note::where('uuid', $uuid)->where('user_id', Auth::id())->firstOrFail();
        return view('notes.show')->with('note', $note);
     }
 

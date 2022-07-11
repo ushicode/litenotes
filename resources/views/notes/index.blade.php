@@ -13,7 +13,7 @@
             </div>
         <div class="inline-flex p-2">
            @forelse ($notes as $note)
-           <a href="{{ route('notes.show', $note->id) }}">
+           <a href="{{ route('notes.show', $note->uuid) }}">
                <div class="card max-w-xs border-2 border-orange-500 bg-yellow-100 rounded-xl shadow-md   p-2  m-2 ">
                 <h2 class="font-bold text-2xl text-black">{{ $note->title }}</h2>
                 <p class=" mt-2 text-gray">{{ Str::limit($note->text, 200) }}</p>
